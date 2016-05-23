@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title></title>
+    <style media="screen">
+      body {
+margin : 0px;
+padding : 0px;
+      }
+    </style>
+  </head>
+  <body>
+
+  </body>
+  <script src="libs/jquery.min.js"></script>
+  <script src="libs/three.js"></script>
+  <script src="libs/OrbitControls.js"></script>
+  <script type="text/javascript">
+
+    var myfov = 50;
+    var myscene = new THREE.Scene();
+    var myaspect = window.innerWidth / window.innerHeight;
+    var mycamera = new THREE.PerspectiveCamera(myfov,myaspect,0.1,100);
+
+
+
+    mycamera.position.set(0,50,50);
+    mycamera.lookAt(new THREE.Vector3(0,0,0));
+
+    var myrenderer = new THREE.WebGLRenderer();
+    myrenderer.setSize(window.innerWidth, window.innerHeight);
+    myrenderer.setClearColor(0xAAAAAA);
+
+    document.body.appendChild(myrenderer.domElement);
+
+    var mycontrol = new THREE.OrbitControls(mycamera,myrenderer.domElement);
+
+    var planog = new THREE.PlaneGeometry( 20, 20, 1 );
+    var planom = new THREE.MeshBasicMaterial( {color: 0x00ff00, wireframe:false} );
+    var plano = new THREE.Mesh( planog, planom );
+    myscene.add( plano );
+    plano.rotation.x = - Math.PI / 2;
+
+    var myaxis = new THREE.AxisHelper(40);
+    myscene.add(myaxis);
+
+    renderloop();
+
+    function renderloop() {
+      window.requestAnimationFrame(renderloop);
+      mycontrol.update();
+      myrenderer.render(myscene,mycamera)
+    }
+
+  </script>
+</html>
