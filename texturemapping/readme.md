@@ -49,7 +49,9 @@ A ordem pela qual são inseridos será importante para definir as faces.
 prisma.vertices.push(v0);
 prisma.vertices.push(v1);
 prisma.vertices.push(v2);
-...
+
+//... restantes vértices
+
 prisma.vertices.push(v7);
 ```
 
@@ -59,6 +61,13 @@ prisma.vertices.push(v7);
 A principal primitiva para criar as faces é o triângulo (Face3)
 Cada face é definida por três indices do vector "vertices".
 A ordem pela qual estes indices são carregados definem a  normal por defeito da face. (i.e. ordem no sentido horário, normal para "lá", regra no sentido anti-horário, normal para "cá").
+
+```javascript
+prisma.faces.push( new THREE.Face3(0,1,5) );
+prisma.faces.push( new THREE.Face3(0,5,4) );
+
+//... restantes faces
+```
 
 ###passo 4: 
 ####Fazer o mapeamento da textura.
@@ -111,8 +120,8 @@ depois....
 Para a primeira face do cubo / prisma:
 
 ```javascript
-geometry.faceVertexUvs[0].push([u000v033.clone(),u025v033.clone(),u025v066.clone()]);
-geometry.faceVertexUvs[0].push([u000v033.clone(),u025v066.clone(),u000v066.clone()]);
+prisma.faceVertexUvs[0].push([u000v033.clone(),u025v033.clone(),u025v066.clone()]);
+prisma.faceVertexUvs[0].push([u000v033.clone(),u025v066.clone(),u000v066.clone()]);
 ```
 
 ###passo 5: 
@@ -135,15 +144,13 @@ var material = new THREE.MeshBasicMaterial({color : 0xFFFF0, map : maptex});
 ```
 
 ###passo 6: 
-####Usar um objecto contentor.
+####criar a mesh e adicionar à cena
 
 neste caso usar um objecto3D para incluir tudo
 
 ```javascript
 mesh = new THREE.Mesh(prisma,material)
-
-var container = new THREE.Object3D();
-container.add(mesh)
+scene.add(mesh)
 ```
 
 ###passo 7:
