@@ -108,6 +108,13 @@ Assim e para o dado, supondo que o lado com "1 pinta" fica
 na primeira face definida, e o lado com "3  pintas" fica 
 depois....
 
+Para a primeira face do cubo / prisma:
+
+```javascript
+geometry.faceVertexUvs[0].push([u000v033.clone(),u025v033.clone(),u025v066.clone()]);
+geometry.faceVertexUvs[0].push([u000v033.clone(),u025v066.clone(),u000v066.clone()]);
+```
+
 ###passo 5: 
 ####Carregar a textura.
 
