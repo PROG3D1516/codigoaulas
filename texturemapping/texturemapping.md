@@ -22,30 +22,30 @@ centrado na origem do referencial
 ###passo 1:
 criar a geometria
 
-´´´javascript
+```javascript
 var prisma = new THREE.Geometry();
-´´´
+```
 
 ###passo 2:
 Definir os vertices e adicioná-los à geometria
 Cada vertice será uma instância de um obecto do tipo Vector3
 
-´´´javascript
+```javascript
 var v0 = new Vector3(-0.5,-0.5,+0.5); // vertice da base inferior
 var v1 = new Vector3(+0.5,-0.5,+0.5); // vertice da base inferior
 //... outros vertices
-´´´
+```´
 
 Os vértices são guardados num array "vertices".
 A ordem pela qual são inseridos será importante para definir as faces.
 
-´´´javascript
+```´javascript
 prisma.vertices.push(v0);
 prisma.vertices.push(v1);
 prisma.vertices.push(v2);
 ...
 prisma.vertices.push(v7);
-´´´
+```´
 
 ###passo 3:
 Criar as faces
@@ -70,7 +70,7 @@ O mapeamento é feito fazendo associar a cada vértice de cada face uma coordena
 Na imagem podemos identificar alguns pontos característicos
 que resultam de uma definição de uma grelha 3 linhas x 4 colunas
 
-´´´javascript
+```javascript
 u000v000 = new THREE.UV(0.00,0.33);
 u000v033 = new THREE.UV(0.00,0.33);
 u000v066 = new THREE.UV(0.00,0.66);
@@ -95,7 +95,7 @@ u100v000 = new THREE.UV(1.00,0.00);
 u100v033 = new THREE.UV(1.00,0.33);
 u100v066 = new THREE.UV(1.00,0.66);
 u100v100 = new THREE.UV(1.00,1.00);
-´´´
+```
 
 Assim e para o dado, supondo que o lado com "1 pinta" fica 
 na primeira face definida, e o lado com "3  pintas" fica 
@@ -104,19 +104,19 @@ depois....
 ###passo 5: 
 carregar a textura
 
-´´´javascript
+```´javascript
 url 	=  "textures/dado.png";
 maptex  =  THREE.ImageUtils.loadTexture(url);
-´´´
+```´
 
 nota: o script deve correr a partir de um servidor (por exemplo local : localhost) sob pena de não funcionar devido a política de segurança dos browsers que impedem carregamento de ficheiros locais.
 
 ###passo 6: 
 usar uma geometria numa "mesh" com um material básico e a indicação
 do mapa de textura.
-´´´javascript
+```´javascript
 var material = new THREE.MeshBasicMaterial({color : 0xFFFF0, map : maptex});
-´´´
+```
 
 ###passo 6: 
 neste caso usar um objecto3D para incluir tudo
