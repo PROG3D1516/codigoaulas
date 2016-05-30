@@ -8,6 +8,9 @@ Neste exercício será definido um mapeamento de uma textura de dum dado para um
 
 
 
+![alt text](https://github.com/PROG3D1516/codigoaulas/blob/master/textures/dado.png  "Textura a mapear num cubo")
+
+
 ##versão 0: mapeamento de textura num cubo
 ###Dados.
 
