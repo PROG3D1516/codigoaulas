@@ -6,9 +6,10 @@ Quando se definem geometrias, podem (e devem) ser definidos os mapeamentos das t
 
 Neste exercício será definido um mapeamento de uma textura de dum dado para um cubo  definido "manualmente".
 
-A textura encontra-se na pasta textures
+
 
 ##versão 0: mapeamento de textura num cubo
+###Dados.
 
 cubo de lado 1
 
@@ -18,17 +19,19 @@ altura : 1 unidades
 
 centrado na origem do referencial
 
+A textura 'dados.png' que se encontra na pasta textures
 
 ###passo 1:
-criar a geometria
+####Criar a geometria.
 
 ```javascript
 var prisma = new THREE.Geometry();
 ```
 
 ###passo 2:
-Definir os vertices e adicioná-los à geometria
-Cada vertice será uma instância de um obecto do tipo Vector3
+####Definir os vertices e adicioná-los à geometria.
+
+Cada vértice será uma instância de um obecto do tipo Vector3.
 
 ```javascript
 var v0 = new Vector3(-0.5,-0.5,+0.5); // vertice da base inferior
@@ -48,13 +51,14 @@ prisma.vertices.push(v7);
 ```
 
 ###passo 3:
-Criar as faces
+####Criar as faces.
+
 A principal primitiva para criar as faces é o triângulo (Face3)
 Cada face é definida por três indices do vector "vertices".
 A ordem pela qual estes indices são carregados definem a  normal por defeito da face. (i.e. ordem no sentido horário, normal para "lá", regra no sentido anti-horário, normal para "cá").
 
 ###passo 4: 
-fazer o mapeamento da textura
+####Fazer o mapeamento da textura.
 
 notar: as coordenadas da imagem/textura estão definidas no sistema normalizado UV
 
@@ -102,7 +106,7 @@ na primeira face definida, e o lado com "3  pintas" fica
 depois....
 
 ###passo 5: 
-carregar a textura
+####Carregar a textura.
 
 ```javascript
 url 	=  "textures/dado.png";
@@ -112,6 +116,8 @@ maptex  =  THREE.ImageUtils.loadTexture(url);
 nota: o script deve correr a partir de um servidor (por exemplo local : localhost) sob pena de não funcionar devido a política de segurança dos browsers que impedem carregamento de ficheiros locais.
 
 ###passo 6: 
+####Definir um material.
+
 usar uma geometria numa "mesh" com um material básico e a indicação
 do mapa de textura.
 ```javascript
@@ -119,14 +125,26 @@ var material = new THREE.MeshBasicMaterial({color : 0xFFFF0, map : maptex});
 ```
 
 ###passo 6: 
+####Usar um objecto contentor.
+
 neste caso usar um objecto3D para incluir tudo
 
+```javascript
+mesh = new THREE.Mesh(prisma,material)
+
+var container = new THREE.Object3D();
+container.add(mesh)
+```
+
 ###passo 7:
-usar um "helper" para ter uma visualização das faces.
-e um "helper" para os eixos 
+####Apoio à Visualização.
+
+Usar um "helper" para ter uma visualização das faces e um "helper" para os eixos 
 
 ###Final:
-fazer o render da cena de forma apropriada
+####Render
+
+Fazer o render da cena de forma apropriada.
 
 
 
